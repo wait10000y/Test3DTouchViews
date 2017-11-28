@@ -12,12 +12,17 @@
 // 实现Peek & Pop交互的控件所在的控制器遵守UIViewControllerPreviewingDelegate协议
 @interface ViewController ()<UIViewControllerPreviewingDelegate>
 
+@property (nonatomic) UIColor *bgColorDefault;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.bgColorDefault = [UIColor colorWithRed:0 green:1 blue:0.05f alpha:1];
+    self.view.backgroundColor = self.bgColorDefault;
 
         // 注册预览视图的代理和来源视图
 //    在控制器内为需要实现Peek & Pop交互的控件注册Peek & Pop功能
@@ -119,5 +124,33 @@
 //    viewControllerToCommit.view.backgroundColor = [UIColor whiteColor];
     [self showViewController:viewControllerToCommit sender:self];
 }
+
+-(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    NSLog(@"touch点 数目:%lu , 当前:force:%f maximumPossibleForce:%f",touches.count,touch.force,touch.maximumPossibleForce);
+    float force = touch.force/touch.maximumPossibleForce;
+
+    UIColor *color = [UIColor colorWithRed:force green:1-force blue:0.05f alpha:1];
+    self.view.backgroundColor = color;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+self.view.backgroundColor = self.bgColorDefault;
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+
+}
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+
+}
+
+
+
+
 
 @end

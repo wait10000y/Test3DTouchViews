@@ -134,7 +134,7 @@
         UIApplicationShortcutItem * item3 = [[UIApplicationShortcutItem alloc]initWithType:@"type3"
                                                                             localizedTitle:@"分享"
                                                                          localizedSubtitle:@"分享描述"
-                                                                                      icon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"timg"]
+                                                                                      icon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"img70"]
                                                                                   userInfo:nil];
 
         UIApplicationShortcutItem * item4 = [[UIApplicationShortcutItem alloc]initWithType:@"type4" // 必填
